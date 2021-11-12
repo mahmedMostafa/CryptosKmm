@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="market">Market</string>
+    <string name="events">Events</string>
+    <string name="settings">Settings</string>
+</resources>
