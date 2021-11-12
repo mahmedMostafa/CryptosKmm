@@ -3,9 +3,9 @@ package com.mohamed.mostafa.cryptocurrencies.android.presentation.cryptos.list
 import androidx.compose.runtime.Composable
 import com.mohamed.mostafa.cryptocurrencies.android.base.components.DefaultScreen
 import com.mohamed.mostafa.cryptocurrencies.android.presentation.cryptos.list.components.CryptosList
-import com.mohamed.mostafa.cryptocurrencies.domain.models.Crypto
-import com.mohamed.mostafa.cryptocurrencies.presentation.cryptos.CryptosIntent
-import com.mohamed.mostafa.cryptocurrencies.presentation.cryptos.CryptosState
+import com.mohamed.mostafa.cryptocurrencies.features.cryptos_list.domain.models.Crypto
+import com.mohamed.mostafa.cryptocurrencies.features.cryptos_list.presentation.cryptos.CryptosIntent
+import com.mohamed.mostafa.cryptocurrencies.features.cryptos_list.presentation.cryptos.CryptosState
 
 @Composable
 fun CryptosScreen(

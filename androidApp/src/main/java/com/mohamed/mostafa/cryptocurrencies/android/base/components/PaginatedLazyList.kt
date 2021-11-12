@@ -13,7 +13,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.mohamed.mostafa.cryptocurrencies.data.remote.ApiService.Constants.PAGINATION_PER_PAGE_COUNT
+import com.mohamed.mostafa.cryptocurrencies.core.datasource.remote.ApiService.Constants.PAGINATION_PER_PAGE_COUNT
 
 
 @Composable

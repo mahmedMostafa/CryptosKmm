@@ -5,11 +5,11 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.mohamed.mostafa.cryptocurrencies.data.remote.ApiService.Constants.PAGINATION_PER_PAGE_COUNT
-import com.mohamed.mostafa.cryptocurrencies.domain.models.Crypto
-import com.mohamed.mostafa.cryptocurrencies.domain.usecases.GetCryptosUseCase
-import com.mohamed.mostafa.cryptocurrencies.presentation.cryptos.CryptosIntent
-import com.mohamed.mostafa.cryptocurrencies.presentation.cryptos.CryptosState
+import com.mohamed.mostafa.cryptocurrencies.core.datasource.remote.ApiService.Constants.PAGINATION_PER_PAGE_COUNT
+import com.mohamed.mostafa.cryptocurrencies.features.cryptos_list.domain.models.Crypto
+import com.mohamed.mostafa.cryptocurrencies.features.cryptos_list.domain.usecases.GetCryptosUseCase
+import com.mohamed.mostafa.cryptocurrencies.features.cryptos_list.presentation.cryptos.CryptosIntent
+import com.mohamed.mostafa.cryptocurrencies.features.cryptos_list.presentation.cryptos.CryptosState
 import dagger.hilt.android.HiltAndroidApp
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch

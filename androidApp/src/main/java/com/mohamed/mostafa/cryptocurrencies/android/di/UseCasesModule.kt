@@ -1,16 +1,15 @@
 package com.mohamed.mostafa.cryptocurrencies.android.di
 
-import com.mohamed.mostafa.cryptocurrencies.data.local.cryptos.CryptoDao
-import com.mohamed.mostafa.cryptocurrencies.data.remote.ApiService
-import com.mohamed.mostafa.cryptocurrencies.data.repository.CryptoRepositoryImpl
-import com.mohamed.mostafa.cryptocurrencies.domain.repository.CryptosRepository
-import com.mohamed.mostafa.cryptocurrencies.domain.usecases.GetCryptosUseCase
+import com.mohamed.mostafa.cryptocurrencies.core.datasource.local.cryptos.CryptoDao
+import com.mohamed.mostafa.cryptocurrencies.core.datasource.remote.ApiService
+import com.mohamed.mostafa.cryptocurrencies.features.cryptos_list.data.repository.CryptoRepositoryImpl
+import com.mohamed.mostafa.cryptocurrencies.features.cryptos_list.domain.repository.CryptosRepository
+import com.mohamed.mostafa.cryptocurrencies.features.cryptos_list.domain.usecases.GetCryptosUseCase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ViewModelComponent
 import dagger.hilt.android.scopes.ViewModelScoped
-import io.ktor.client.*
 
 
 @Module

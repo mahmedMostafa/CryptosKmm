@@ -2,7 +2,6 @@ package com.mohamed.mostafa.cryptocurrencies.android.presentation
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.mohamed.mostafa.cryptocurrencies.Greeting
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
 import com.mohamed.mostafa.cryptocurrencies.android.R
@@ -10,9 +9,6 @@ import com.mohamed.mostafa.cryptocurrencies.android.presentation.cryptos.list.Cr
 import com.mohamed.mostafa.cryptocurrencies.android.presentation.navigation.Navigation
 import dagger.hilt.android.AndroidEntryPoint
 
-fun greet(): String {
-    return Greeting().greeting()
-}
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
