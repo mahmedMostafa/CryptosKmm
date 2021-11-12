@@ -1,5 +1,6 @@
 package com.mohamed.mostafa.cryptocurrencies.android.di
 
+import com.mohamed.mostafa.cryptocurrencies.data.local.cryptos.CryptoDao
 import com.mohamed.mostafa.cryptocurrencies.data.remote.ApiService
 import com.mohamed.mostafa.cryptocurrencies.data.repository.CryptoRepositoryImpl
 import com.mohamed.mostafa.cryptocurrencies.domain.repository.CryptosRepository
@@ -19,8 +20,11 @@ object UseCasesModule {
 
     @Provides
     @ViewModelScoped
-    fun provideCryptosRepository(apiService: ApiService): CryptosRepository {
-        return CryptoRepositoryImpl(apiService)
+    fun provideCryptosRepository(
+        apiService: ApiService,
+        cryptoCache: CryptoDao
+    ): CryptosRepository {
+        return CryptoRepositoryImpl(apiService, cryptoCache)
     }
 
     @Provides
