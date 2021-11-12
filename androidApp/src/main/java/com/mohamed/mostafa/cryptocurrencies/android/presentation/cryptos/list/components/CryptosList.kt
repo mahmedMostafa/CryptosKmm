@@ -1,6 +1,7 @@
-package com.mohamed.mostafa.cryptocurrencies.android.presentation.cryptos.components
+package com.mohamed.mostafa.cryptocurrencies.android.presentation.cryptos.list.components
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Card
 import androidx.compose.material.MaterialTheme
@@ -13,7 +14,6 @@ import coil.compose.rememberImagePainter
 import coil.transform.CircleCropTransformation
 import com.mohamed.mostafa.cryptocurrencies.android.base.components.PaginatedLazyList
 import com.mohamed.mostafa.cryptocurrencies.domain.models.Crypto
-import com.mohamed.mostafa.cryptocurrencies.domain.models.PaginatedList
 
 @Composable
 fun CryptosList(
@@ -22,6 +22,7 @@ fun CryptosList(
     page: Int,
     getNextPage: () -> Unit,
     onRetryClick: () -> Unit,
+    onItemClick: (Crypto) -> Unit,
     errorMessage: String? = null,
 ) {
     PaginatedLazyList(
@@ -32,16 +33,19 @@ fun CryptosList(
         getNextPage = getNextPage,
         onRetryClick = onRetryClick,
         itemContent = { crypto ->
-            CryptoListItem(crypto)
+            CryptoListItem(crypto, onItemClick)
         }
     )
 }
 
 @Composable
-fun CryptoListItem(item: Crypto) {
+fun CryptoListItem(item: Crypto, onItemClick: (Crypto) -> Unit) {
     Card(
         modifier = Modifier
             .padding(12.dp)
+            .clickable {
+                onItemClick(item)
+            }
             .fillMaxWidth(),
         shape = MaterialTheme.shapes.medium,
         elevation = 10.dp

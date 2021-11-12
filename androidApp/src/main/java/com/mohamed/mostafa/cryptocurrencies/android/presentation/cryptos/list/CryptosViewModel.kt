@@ -1,4 +1,4 @@
-package com.mohamed.mostafa.cryptocurrencies.android.presentation.cryptos
+package com.mohamed.mostafa.cryptocurrencies.android.presentation.cryptos.list
 
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf

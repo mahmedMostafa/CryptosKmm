@@ -1,15 +1,17 @@
-package com.mohamed.mostafa.cryptocurrencies.android.presentation.cryptos
+package com.mohamed.mostafa.cryptocurrencies.android.presentation.cryptos.list
 
 import androidx.compose.runtime.Composable
 import com.mohamed.mostafa.cryptocurrencies.android.base.components.DefaultScreen
-import com.mohamed.mostafa.cryptocurrencies.android.presentation.cryptos.components.CryptosList
+import com.mohamed.mostafa.cryptocurrencies.android.presentation.cryptos.list.components.CryptosList
+import com.mohamed.mostafa.cryptocurrencies.domain.models.Crypto
 import com.mohamed.mostafa.cryptocurrencies.presentation.cryptos.CryptosIntent
 import com.mohamed.mostafa.cryptocurrencies.presentation.cryptos.CryptosState
 
 @Composable
 fun CryptosScreen(
     state: CryptosState,
-    onTriggerIntent: (CryptosIntent) -> Unit
+    onTriggerIntent: (CryptosIntent) -> Unit,
+    onItemClick: (Crypto) -> Unit,
 ) {
 
     DefaultScreen(
@@ -26,7 +28,8 @@ fun CryptosScreen(
             },
             onRetryClick = {
                 onTriggerIntent(CryptosIntent.GetCryptos)
-            }
+            },
+            onItemClick = onItemClick,
         )
     }
 }

@@ -3,14 +3,11 @@ package com.mohamed.mostafa.cryptocurrencies.android.presentation
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.mohamed.mostafa.cryptocurrencies.Greeting
-import android.widget.TextView
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
 import com.mohamed.mostafa.cryptocurrencies.android.R
-import com.mohamed.mostafa.cryptocurrencies.android.presentation.cryptos.CryptosScreen
-import com.mohamed.mostafa.cryptocurrencies.android.presentation.cryptos.CryptosViewModel
+import com.mohamed.mostafa.cryptocurrencies.android.presentation.cryptos.list.CryptosViewModel
 import com.mohamed.mostafa.cryptocurrencies.android.presentation.navigation.Navigation
-import com.mohamed.mostafa.cryptocurrencies.presentation.cryptos.CryptosIntent
 import dagger.hilt.android.AndroidEntryPoint
 
 fun greet(): String {
