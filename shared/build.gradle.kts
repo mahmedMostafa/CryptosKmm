@@ -5,7 +5,7 @@ plugins {
     kotlin(KotlinPlugins.cocoapods)
     kotlin(KotlinPlugins.serialization) version Kotlin.version
     id(Plugins.androidLibrary)
-//    id(Plugins.sqlDelight)
+    id(Plugins.sqlDelight)
 }
 
 version = "1.0"
@@ -72,4 +72,16 @@ android {
         minSdkVersion(21)
         targetSdkVersion(31)
     }
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+    }
 }
+
+sqldelight {
+    database("CryptosDatabase") {
+        packageName = "com.mohamed.mostafa.cryptocurrencies.data.cache"
+        sourceFolders = listOf("sqldelight")
+    }
+}
+

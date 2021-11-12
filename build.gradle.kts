@@ -7,7 +7,7 @@ buildscript {
     dependencies {
         classpath(Build.kotlinGradlePlugin)
         classpath(Build.androidBuildTools)
-//        classpath(Build.sqlDelightGradlePlugin)
+        classpath(Build.sqlDelightGradlePlugin)
         classpath(Build.hiltAndroid)
     }
 }
