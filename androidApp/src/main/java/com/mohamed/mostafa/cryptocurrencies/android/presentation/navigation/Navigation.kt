@@ -40,6 +40,7 @@ fun Navigation() {
             startDestination = BottomBarScreen.Cryptos.route,
             Modifier.padding(innerPadding)
         ) {
+
             composable(BottomBarScreen.Cryptos.route) { navBackStackEntry ->
                 val viewModel = hiltViewModel<CryptosViewModel>()
                 CryptosScreen(
@@ -50,6 +51,7 @@ fun Navigation() {
                     }
                 )
             }
+
             composable(BottomBarScreen.Events.route) { navBackStackEntry ->
 
             }

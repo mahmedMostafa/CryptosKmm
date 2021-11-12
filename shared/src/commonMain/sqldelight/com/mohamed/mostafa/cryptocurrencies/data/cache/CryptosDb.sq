@@ -23,7 +23,7 @@ SELECT * FROM crypto_Entity ORDER BY marketCapRank LIMIT :pageSize OFFSET :offse
 getCryptoById:
 SELECT * FROM crypto_Entity WHERE id = :id;
 
-updateCryptoDetails: UPDATE crypto_Entity SET description = :description;
+updateCryptoDetails: UPDATE crypto_Entity SET description = :description WHERE id =:id;
 
 deleteCryptoById: DELETE FROM crypto_Entity WHERE id =:id;
 
