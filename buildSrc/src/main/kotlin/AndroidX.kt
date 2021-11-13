@@ -10,6 +10,10 @@ object AndroidX {
 
     private const val recyclerviewVersion = "1.2.1"
     const val recyclerview = "androidx.recyclerview:recyclerview:$recyclerviewVersion"
+
+    private const val splashScreenVersion = "1.0.0-alpha02"
+
+    const val splashScreen = "androidx.core:core-splashscreen:$splashScreenVersion"
 }
 
 object AndroidXTest {

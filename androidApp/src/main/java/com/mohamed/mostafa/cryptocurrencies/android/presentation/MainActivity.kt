@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.mohamed.mostafa.cryptocurrencies.android.R
 import com.mohamed.mostafa.cryptocurrencies.android.presentation.cryptos.list.CryptosViewModel
 import com.mohamed.mostafa.cryptocurrencies.android.presentation.navigation.Navigation
@@ -17,8 +18,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-
+        installSplashScreen()
         setContent {
             Navigation()
         }

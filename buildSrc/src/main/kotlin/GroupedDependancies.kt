@@ -17,6 +17,7 @@ internal val composeDependencies = listOf(
 internal val androidXDependencies = listOf(
     AndroidX.appCompat,
     AndroidX.coreKtx,
+    AndroidX.splashScreen
 )
 
 internal val hiltDependencies = listOf(
