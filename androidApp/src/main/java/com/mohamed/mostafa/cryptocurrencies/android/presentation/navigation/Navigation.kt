@@ -63,7 +63,7 @@ fun Navigation() {
                 }),
             ) { navBackStackEntry ->
                 val viewModel = hiltViewModel<CryptoDetailViewModel>()
-                CryptoDetailScreen(viewModel)
+                CryptoDetailScreen(viewModel.state.value)
             }
         }
     }

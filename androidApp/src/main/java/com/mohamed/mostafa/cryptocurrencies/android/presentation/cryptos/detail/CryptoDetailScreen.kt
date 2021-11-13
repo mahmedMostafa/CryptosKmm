@@ -6,17 +6,21 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import com.mohamed.mostafa.cryptocurrencies.android.base.components.DefaultScreen
+import com.mohamed.mostafa.cryptocurrencies.features.crypto_detail.presentation.CryptoDetailState
 
 
 @Composable
 fun CryptoDetailScreen(
-    viewModel: CryptoDetailViewModel,
+    state: CryptoDetailState,
 ) {
 
-    Box(
-        modifier = Modifier.fillMaxSize(),
-        contentAlignment = Alignment.Center
-    ) {
-        Text("Crypto Detail Screen")
+    DefaultScreen(isLoading = state.isLoading) {
+        Box(
+            modifier = Modifier.fillMaxSize(),
+            contentAlignment = Alignment.Center
+        ) {
+            Text(state.crypto?.description ?: "")
+        }
     }
 }

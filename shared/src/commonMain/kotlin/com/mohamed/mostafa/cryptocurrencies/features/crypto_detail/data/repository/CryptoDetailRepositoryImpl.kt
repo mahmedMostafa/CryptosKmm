@@ -14,7 +14,7 @@ class CryptoDetailRepositoryImpl(
 
     override suspend fun getCryptoDetail(id: String): Crypto {
         val data = cryptoService.getCryptoDetail(id)
-        cryptoCache.updateCryptoDetail(id, data.description ?: "")
+        cryptoCache.updateCryptoDetail(id, data.description?.en ?: "")
         return cryptoCache.getCryptoById(id)
     }
 }

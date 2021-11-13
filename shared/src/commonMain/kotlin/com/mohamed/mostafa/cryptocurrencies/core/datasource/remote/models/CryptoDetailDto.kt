@@ -10,11 +10,8 @@ data class CryptoDetailDto(
     @SerialName("id")
     val id: String? = null,
 
-    @SerialName("image")
-    val image: String? = null,
-
     @SerialName("description")
-    val description: String? = null,
+    val description: Description? = null,
 
     @SerialName("name")
     val name: String? = null,
@@ -33,6 +30,13 @@ data class CryptoDetailDto(
 
     @SerialName("total_volume")
     val totalVolume: Long? = null
+)
+
+@Serializable
+data class Description(
+
+    @SerialName("en")
+    val en: String? = null
 )
 
 @Serializable
