@@ -1,6 +1,6 @@
 package com.mohamed.mostafa.cryptocurrencies.features.cryptos_list.domain.repository
 
-import com.mohamed.mostafa.cryptocurrencies.features.cryptos_list.domain.models.Crypto
+import com.mohamed.mostafa.cryptocurrencies.shared.domain.models.Crypto
 
 
 interface CryptosRepository {

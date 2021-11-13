@@ -13,7 +13,7 @@ import androidx.compose.ui.unit.dp
 import coil.compose.rememberImagePainter
 import coil.transform.CircleCropTransformation
 import com.mohamed.mostafa.cryptocurrencies.android.base.components.PaginatedLazyList
-import com.mohamed.mostafa.cryptocurrencies.features.cryptos_list.domain.models.Crypto
+import com.mohamed.mostafa.cryptocurrencies.shared.domain.models.Crypto
 
 @Composable
 fun CryptosList(

@@ -1,6 +1,6 @@
 package com.mohamed.mostafa.cryptocurrencies.features.cryptos_list.presentation.cryptos
 
-import com.mohamed.mostafa.cryptocurrencies.features.cryptos_list.domain.models.Crypto
+import com.mohamed.mostafa.cryptocurrencies.shared.domain.models.Crypto
 
 data class CryptosState(
     var cryptos: List<Crypto> = emptyList(),

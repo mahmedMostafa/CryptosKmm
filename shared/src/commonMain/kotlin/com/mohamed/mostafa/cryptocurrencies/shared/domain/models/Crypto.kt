@@ -1,4 +1,4 @@
-package com.mohamed.mostafa.cryptocurrencies.features.cryptos_list.domain.models
+package com.mohamed.mostafa.cryptocurrencies.shared.domain.models
 
 data class Crypto(
     val id: String? = null,

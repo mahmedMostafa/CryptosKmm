@@ -2,6 +2,7 @@ package com.mohamed.mostafa.cryptocurrencies.core.datasource.remote
 
 
 import com.mohamed.mostafa.cryptocurrencies.core.datasource.remote.ApiService.Constants.BASE_URL
+import com.mohamed.mostafa.cryptocurrencies.core.datasource.remote.models.CryptoDetailDto
 import com.mohamed.mostafa.cryptocurrencies.core.datasource.remote.models.CryptoDto
 import io.ktor.client.*
 import io.ktor.client.request.*
@@ -17,6 +18,17 @@ class ApiServiceImpl(
             parameter("order", "market_cap_desc")
             parameter("page", page)
             parameter("per_page", perPage)
+        }
+    }
+
+    override suspend fun getCryptoDetail(id: String): CryptoDetailDto {
+        return httpClient.get {
+            url("$BASE_URL/coins/$id")
+            parameter("localization", false)
+            parameter("tickers", false)
+            parameter("community_data", false)
+            parameter("developer_data", false)
+            parameter("sparkline", false)
         }
     }
 }

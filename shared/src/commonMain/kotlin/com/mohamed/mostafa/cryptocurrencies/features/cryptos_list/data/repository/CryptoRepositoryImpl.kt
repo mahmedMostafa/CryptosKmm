@@ -4,7 +4,7 @@ package com.mohamed.mostafa.cryptocurrencies.features.cryptos_list.data.reposito
 import com.mohamed.mostafa.cryptocurrencies.core.datasource.local.cryptos.CryptoDao
 import com.mohamed.mostafa.cryptocurrencies.core.datasource.remote.ApiService
 import com.mohamed.mostafa.cryptocurrencies.features.cryptos_list.domain.mappers.toDomainList
-import com.mohamed.mostafa.cryptocurrencies.features.cryptos_list.domain.models.Crypto
+import com.mohamed.mostafa.cryptocurrencies.shared.domain.models.Crypto
 import com.mohamed.mostafa.cryptocurrencies.features.cryptos_list.domain.repository.CryptosRepository
 
 class CryptoRepositoryImpl(

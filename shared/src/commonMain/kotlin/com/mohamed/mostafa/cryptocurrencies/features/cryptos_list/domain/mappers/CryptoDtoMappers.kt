@@ -1,7 +1,7 @@
 package com.mohamed.mostafa.cryptocurrencies.features.cryptos_list.domain.mappers
 
 import com.mohamed.mostafa.cryptocurrencies.core.datasource.remote.models.CryptoDto
-import com.mohamed.mostafa.cryptocurrencies.features.cryptos_list.domain.models.Crypto
+import com.mohamed.mostafa.cryptocurrencies.shared.domain.models.Crypto
 
 
 fun CryptoDto.toDomainModel(): Crypto {

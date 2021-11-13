@@ -4,7 +4,7 @@ import com.mohamed.mostafa.cryptocurrencies.core.datasource.remote.ApiService.Co
 import com.mohamed.mostafa.cryptocurrencies.data.cache.CryptosDatabase
 import com.mohamed.mostafa.cryptocurrencies.features.cryptos_list.domain.mappers.toDomainList
 import com.mohamed.mostafa.cryptocurrencies.features.cryptos_list.domain.mappers.toDomainModel
-import com.mohamed.mostafa.cryptocurrencies.features.cryptos_list.domain.models.Crypto
+import com.mohamed.mostafa.cryptocurrencies.shared.domain.models.Crypto
 
 class CryptosDaoImpl(
     private val cryptosDatabase: CryptosDatabase,
@@ -27,6 +27,10 @@ class CryptosDaoImpl(
         cryptos.forEach { crypto ->
             insertCrypto(crypto)
         }
+    }
+
+    override fun updateCryptoDetail(id: String, description: String) {
+        queries.updateCryptoDetails(id = id, description = description)
     }
 
     override fun getCryptoById(id: String): Crypto {
