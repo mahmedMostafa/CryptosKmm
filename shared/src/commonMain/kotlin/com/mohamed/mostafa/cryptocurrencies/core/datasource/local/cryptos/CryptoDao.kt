@@ -11,6 +11,8 @@ interface CryptoDao {
 
     fun updateCryptoDetail(id: String, description: String)
 
+    fun addOrRemoveFromFavorites(id: String)
+
     fun getCryptoById(id: String): Crypto
 
     fun getCryptos(page: Int): List<Crypto>

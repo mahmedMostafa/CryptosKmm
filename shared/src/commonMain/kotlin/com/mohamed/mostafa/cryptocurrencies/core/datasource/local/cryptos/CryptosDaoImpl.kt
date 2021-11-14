@@ -33,6 +33,16 @@ class CryptosDaoImpl(
         queries.updateCryptoDetails(id = id, description = description)
     }
 
+    override fun addOrRemoveFromFavorites(id: String) {
+        queries.transaction {
+            if (queries.isInFavorites(id) == null) {
+
+            } else {
+
+            }
+        }
+    }
+
     override fun getCryptoById(id: String): Crypto {
         return queries.getCryptoById(id).executeAsOne().toDomainModel()
     }

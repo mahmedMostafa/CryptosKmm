@@ -4,6 +4,8 @@ package com.mohamed.mostafa.cryptocurrencies.core.datasource.remote
 import com.mohamed.mostafa.cryptocurrencies.core.datasource.remote.ApiService.Constants.BASE_URL
 import com.mohamed.mostafa.cryptocurrencies.core.datasource.remote.models.CryptoDetailDto
 import com.mohamed.mostafa.cryptocurrencies.core.datasource.remote.models.CryptoDto
+import com.mohamed.mostafa.cryptocurrencies.core.datasource.remote.models.EventTypeDto
+import com.mohamed.mostafa.cryptocurrencies.core.datasource.remote.models.EventsResponse
 import io.ktor.client.*
 import io.ktor.client.request.*
 
@@ -29,6 +31,19 @@ class ApiServiceImpl(
             parameter("community_data", false)
             parameter("developer_data", false)
             parameter("sparkline", false)
+        }
+    }
+
+    override suspend fun getEventTypes(): EventTypeDto {
+        return httpClient.get {
+            url("$BASE_URL/events/types")
+        }
+    }
+
+    override suspend fun getEvents(eventType: String): EventsResponse {
+        return httpClient.get {
+            url("$BASE_URL/events")
+            parameter("type", eventType)
         }
     }
 }

@@ -5,7 +5,8 @@ CREATE TABLE crypto_Entity(
     image TEXT NOT NULL,
     currentPrice REAL NOT NULL, --Real is retrieved as double from the db--
     marketCap INTEGER NOT NULL DEFAULT -1,-- Integer is retrieved as long from the db--
-    marketCapRank INTEGER NOT NULL
+    marketCapRank INTEGER NOT NULL,
+    isFavorite INTEGER AS Boolean NOT NULL DEFAULT 0 --default value for isFavorite Boolean is 0 (FALSE)
 );
 
 --TODO Update the Crypto Entity Later to include list of strings and Enum values--
@@ -16,6 +17,14 @@ id,name,image,currentPrice,marketCap,marketCapRank
 
 
 getAllCryptos: SELECT * FROM crypto_Entity;
+
+getAllFavorites: SELECT * FROM crypto_Entity WHERE isFavorite = 1;
+
+addToFavorites: UPDATE crypto_Entity SET isFavorite = 1 WHERE id =:id;
+
+removeFromFavorites: UPDATE crypto_Entity SET isFavorite =0 WHERE id=:id;
+
+isInFavorites: SELECT * FROM crypto_Entity WHERE id=:id AND isFavorite == 1;
 
 getCryptosByPage:
 SELECT * FROM crypto_Entity ORDER BY marketCapRank LIMIT :pageSize OFFSET :offset;
