@@ -11,9 +11,15 @@ CREATE TABLE crypto_Entity(
 
 --TODO Update the Crypto Entity Later to include list of strings and Enum values--
 
-insertCrypt: INSERT OR REPLACE INTO crypto_Entity (
+insertCrypt: INSERT INTO crypto_Entity (
 id,name,image,currentPrice,marketCap,marketCapRank
-) VALUES (?,?,?,?,?,?);
+) VALUES (?,?,?,?,?,?)
+ON CONFLICT(id) DO UPDATE SET
+name = excluded.name,
+image= excluded.image,
+currentPrice= excluded.currentPrice,
+marketCap= excluded.marketCap,
+marketCapRank= excluded.marketCapRank;
 
 
 getAllCryptos: SELECT * FROM crypto_Entity;

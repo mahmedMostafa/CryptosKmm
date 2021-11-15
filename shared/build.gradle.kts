@@ -82,6 +82,7 @@ sqldelight {
     database("CryptosDatabase") {
         packageName = "com.mohamed.mostafa.cryptocurrencies.data.cache"
         sourceFolders = listOf("sqldelight")
+        dialect = "sqlite:3.24"
     }
 }
 
