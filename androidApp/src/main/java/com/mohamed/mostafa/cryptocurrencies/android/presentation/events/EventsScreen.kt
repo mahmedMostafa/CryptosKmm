@@ -2,9 +2,10 @@ package com.mohamed.mostafa.cryptocurrencies.android.presentation.events
 
 
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.Text
-import androidx.compose.material.TopAppBar
-import androidx.compose.runtime.Composable
+import androidx.compose.material.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Refresh
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
@@ -21,12 +22,22 @@ fun EventsScreen(
     onTriggerAction: (EventsAction) -> Unit,
 ) {
 
+    var showMenu by remember { mutableStateOf(false) }
+
     DefaultScreen(
         isLoading = state.isLoading,
         topBar = {
             TopAppBar(
                 title = {
                     Text("Events")
+                },
+                actions = {
+//                    DropdownMenu(
+//                        expanded = showMenu,
+//                        onDismissRequest = { showMenu = false }
+//                    ) {
+//
+//                    }
                 }
             )
         },
