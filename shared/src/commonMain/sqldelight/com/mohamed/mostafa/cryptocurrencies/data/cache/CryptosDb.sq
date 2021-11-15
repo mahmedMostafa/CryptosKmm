@@ -24,8 +24,6 @@ addToFavorites: UPDATE crypto_Entity SET isFavorite = 1 WHERE id =:id;
 
 removeFromFavorites: UPDATE crypto_Entity SET isFavorite =0 WHERE id=:id;
 
-isInFavorites: SELECT * FROM crypto_Entity WHERE id=:id AND isFavorite == 1;
-
 getCryptosByPage:
 SELECT * FROM crypto_Entity ORDER BY marketCapRank LIMIT :pageSize OFFSET :offset;
 

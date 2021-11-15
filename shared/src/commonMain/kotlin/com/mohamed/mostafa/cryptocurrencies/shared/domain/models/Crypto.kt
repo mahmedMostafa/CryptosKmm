@@ -8,4 +8,5 @@ data class Crypto(
     val currentPrice: Double? = null,
     val marketCap: Long? = null,
     val marketCapRank: Int? = null,
+    var isFavorite: Boolean? = false,
 )

@@ -35,10 +35,11 @@ class CryptosDaoImpl(
 
     override fun addOrRemoveFromFavorites(id: String) {
         queries.transaction {
-            if (queries.isInFavorites(id) == null) {
-
+            val crypto = queries.getCryptoById(id).executeAsOne().toDomainModel()
+            if (crypto.isFavorite == true) {//this also checks for null value
+                queries.removeFromFavorites(id)
             } else {
-
+                queries.addToFavorites(id)
             }
         }
     }

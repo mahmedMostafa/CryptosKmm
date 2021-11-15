@@ -11,6 +11,7 @@ fun Crypto_Entity.toDomainModel(): Crypto {
         description = description,
         marketCapRank = marketCapRank.toInt(),
         image = image,
+        isFavorite = isFavorite,
     )
 }
 
