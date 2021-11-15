@@ -8,7 +8,7 @@ import androidx.lifecycle.viewModelScope
 import com.mohamed.mostafa.cryptocurrencies.core.datasource.remote.ApiService.Constants.PAGINATION_PER_PAGE_COUNT
 import com.mohamed.mostafa.cryptocurrencies.shared.domain.models.Crypto
 import com.mohamed.mostafa.cryptocurrencies.features.cryptos_list.domain.usecases.GetCryptosUseCase
-import com.mohamed.mostafa.cryptocurrencies.features.cryptos_list.presentation.cryptos.CryptosIntent
+import com.mohamed.mostafa.cryptocurrencies.features.cryptos_list.presentation.cryptos.CryptosActions
 import com.mohamed.mostafa.cryptocurrencies.features.cryptos_list.presentation.cryptos.CryptosState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -24,19 +24,19 @@ class CryptosViewModel @Inject constructor(
     val state: MutableState<CryptosState> = mutableStateOf(CryptosState())
 
 
-    fun onTriggerIntent(intent: CryptosIntent) {
-        when (intent) {
-            is CryptosIntent.GetCryptos -> {
+    fun onTriggerIntent(actions: CryptosActions) {
+        when (actions) {
+            is CryptosActions.GetCryptos -> {
                 getCryptos()
             }
-            is CryptosIntent.GetNextPage -> {
+            is CryptosActions.GetNextPage -> {
                 getNextPage()
             }
         }
     }
 
     init {
-        onTriggerIntent(CryptosIntent.GetCryptos)
+        onTriggerIntent(CryptosActions.GetCryptos)
     }
 
     private fun getNextPage() {
