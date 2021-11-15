@@ -19,6 +19,8 @@ import com.mohamed.mostafa.cryptocurrencies.android.presentation.cryptos.detail.
 import com.mohamed.mostafa.cryptocurrencies.android.presentation.cryptos.detail.CryptoDetailViewModel
 import com.mohamed.mostafa.cryptocurrencies.android.presentation.cryptos.list.CryptosScreen
 import com.mohamed.mostafa.cryptocurrencies.android.presentation.cryptos.list.CryptosViewModel
+import com.mohamed.mostafa.cryptocurrencies.android.presentation.events.EventsScreen
+import com.mohamed.mostafa.cryptocurrencies.android.presentation.events.EventsViewModel
 
 @Composable
 fun Navigation() {
@@ -53,7 +55,11 @@ fun Navigation() {
             }
 
             composable(BottomBarScreen.Events.route) { navBackStackEntry ->
-
+                val viewModel = hiltViewModel<EventsViewModel>()
+                EventsScreen(
+                    state = viewModel.state.value,
+                    onTriggerAction = viewModel::onTriggerAction,
+                )
             }
 
             composable(
