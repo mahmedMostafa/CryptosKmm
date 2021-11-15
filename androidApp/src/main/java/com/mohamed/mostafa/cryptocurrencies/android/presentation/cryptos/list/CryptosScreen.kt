@@ -12,7 +12,7 @@ import com.mohamed.mostafa.cryptocurrencies.features.cryptos_list.presentation.c
 @Composable
 fun CryptosScreen(
     state: CryptosState,
-    onTriggerIntent: (CryptosActions) -> Unit,
+    onTriggerAction: (CryptosActions) -> Unit,
     onItemClick: (Crypto) -> Unit,
 ) {
 
@@ -29,10 +29,13 @@ fun CryptosScreen(
             page = state.page,
             errorMessage = if (state.page > 1 && state.errorMessage != null) state.errorMessage else null,
             getNextPage = {
-                onTriggerIntent(CryptosActions.GetNextPage)
+                onTriggerAction(CryptosActions.GetNextPage)
             },
             onRetryClick = {
-                onTriggerIntent(CryptosActions.GetCryptos)
+                onTriggerAction(CryptosActions.GetCryptos)
+            },
+            onFavoriteClick = {
+                onTriggerAction(CryptosActions.AddOrRemoveFromFavorites(it.id ?: ""))
             },
             onItemClick = onItemClick,
         )

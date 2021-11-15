@@ -9,7 +9,6 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.hilt.navigation.compose.hiltViewModel
-import androidx.navigation.NavArgument
 import androidx.navigation.NavController
 import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavGraph.Companion.findStartDestination
@@ -47,7 +46,7 @@ fun Navigation() {
                 val viewModel = hiltViewModel<CryptosViewModel>()
                 CryptosScreen(
                     state = viewModel.state.value,
-                    onTriggerIntent = viewModel::onTriggerIntent,
+                    onTriggerAction = viewModel::onTriggerIntent,
                     onItemClick = { crypto ->
                         navController.navigate("${Screen.CryptoDetail.route}/${crypto.id}")
                     }

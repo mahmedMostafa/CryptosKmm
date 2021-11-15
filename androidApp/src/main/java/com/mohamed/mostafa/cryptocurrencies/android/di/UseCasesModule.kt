@@ -12,6 +12,7 @@ import com.mohamed.mostafa.cryptocurrencies.features.events.data.repository.Even
 import com.mohamed.mostafa.cryptocurrencies.features.events.domain.repository.EventsRepository
 import com.mohamed.mostafa.cryptocurrencies.features.events.domain.usecases.GetEventTypes
 import com.mohamed.mostafa.cryptocurrencies.features.events.domain.usecases.GetEvents
+import com.mohamed.mostafa.cryptocurrencies.shared.domain.usecases.AddOrRemoveFromFavorites
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -61,6 +62,12 @@ object UseCasesModule {
     @ViewModelScoped
     fun provideGetEventTypesUseCase(repository: EventsRepository): GetEventTypes {
         return GetEventTypes(repository)
+    }
+
+    @Provides
+    @ViewModelScoped
+    fun provideAddOrRemoveFromFavoritesUseCase(repository: CryptosRepository): AddOrRemoveFromFavorites {
+        return AddOrRemoveFromFavorites(repository)
     }
 
     @Provides
