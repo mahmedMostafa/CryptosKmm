@@ -1,11 +1,9 @@
 package com.mohamed.mostafa.cryptocurrencies.android.base.components
 
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material.CircularProgressIndicator
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Scaffold
-import androidx.compose.material.Text
+import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -15,10 +13,12 @@ import androidx.compose.ui.Modifier
 fun DefaultScreen(
     isLoading: Boolean,
     errorMessage: String? = null,
+    topBar: @Composable () -> Unit,
     content: @Composable () -> Unit,
 ) {
     Scaffold(
-        modifier = Modifier.fillMaxSize()
+        modifier = Modifier.fillMaxSize(),
+        topBar = topBar,
     ) {
 
         Box(

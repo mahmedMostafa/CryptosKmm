@@ -15,7 +15,10 @@ fun CryptoDetailScreen(
     state: CryptoDetailState,
 ) {
 
-    DefaultScreen(isLoading = state.isLoading) {
+    DefaultScreen(
+        isLoading = state.isLoading,
+        topBar = {}
+    ) {
         Box(
             modifier = Modifier.fillMaxSize(),
             contentAlignment = Alignment.Center

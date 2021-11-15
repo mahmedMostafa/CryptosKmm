@@ -1,5 +1,7 @@
 package com.mohamed.mostafa.cryptocurrencies.android.presentation.cryptos.list
 
+import androidx.compose.material.Text
+import androidx.compose.material.TopAppBar
 import androidx.compose.runtime.Composable
 import com.mohamed.mostafa.cryptocurrencies.android.base.components.DefaultScreen
 import com.mohamed.mostafa.cryptocurrencies.android.presentation.cryptos.list.components.CryptosList
@@ -17,6 +19,9 @@ fun CryptosScreen(
     DefaultScreen(
         isLoading = state.isLoading,
         errorMessage = if (state.page == 1) state.errorMessage else null,
+        topBar = {
+            TopAppBar(title = { Text("Cryptos") })
+        }
     ) {
         CryptosList(
             isLoadingMore = state.isLoadingMore,

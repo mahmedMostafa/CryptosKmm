@@ -5,7 +5,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.emptyFlow
 
 data class EventsState(
-    val isLoading: Boolean,
+    val isLoading: Boolean = true,
     val errorMessage: String? = null,//It might have more than one error message like that!
     val eventTypes: List<String> = emptyList(),
     val selectedEventType: String? = null,

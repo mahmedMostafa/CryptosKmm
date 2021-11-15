@@ -42,7 +42,7 @@ class EventsViewModel @Inject constructor(
     private fun getEventsTypes() = viewModelScope.launch {
         getEventsTypes.invoke(
             onLoading = { isLoading ->
-                state.value = state.value.copy(isLoading = isLoading)
+//                state.value = state.value.copy(isLoading = isLoading)
             },
             onError = { errorMessage ->
                 state.value = state.value.copy(errorMessage = errorMessage)
@@ -58,6 +58,7 @@ class EventsViewModel @Inject constructor(
     }
 
     private fun getEvents(eventType: String) = viewModelScope.launch {
+        state.value = state.value.copy(selectedEventType = eventType)
         getEvents.invoke(
             params = eventType,
             onLoading = { isLoading ->
