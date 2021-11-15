@@ -23,4 +23,8 @@ class CryptoRepositoryImpl(
         }
         return cryptoCache.getCryptos(page)
     }
+
+    override suspend fun addOrRemoveFromFavorites(id: String) {
+        cryptoCache.addOrRemoveFromFavorites(id)
+    }
 }
