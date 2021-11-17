@@ -25,7 +25,7 @@ fun EventsScreen(
     var showMenu by remember { mutableStateOf(false) }
 
     DefaultScreen(
-        isLoading = state.isLoading,
+        isLoading = false,//we want to show our loading shimmer effect
         topBar = {
             TopAppBar(
                 title = {

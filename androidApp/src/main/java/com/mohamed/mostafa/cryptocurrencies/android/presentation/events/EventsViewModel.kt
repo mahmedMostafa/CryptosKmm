@@ -13,6 +13,7 @@ import com.mohamed.mostafa.cryptocurrencies.features.events.domain.usecases.GetE
 import com.mohamed.mostafa.cryptocurrencies.features.events.presentation.EventsAction
 import com.mohamed.mostafa.cryptocurrencies.features.events.presentation.EventsState
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 import javax.inject.Inject

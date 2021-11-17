@@ -3,7 +3,10 @@ package com.mohamed.mostafa.cryptocurrencies.android.presentation.navigation
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Check
 import androidx.compose.material.icons.filled.Favorite
+import androidx.compose.material.icons.filled.Info
+import androidx.compose.material.icons.filled.Settings
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
@@ -84,7 +87,19 @@ fun MyBottomBar(
         val currentDestination = navBackStackEntry?.destination
         screens.forEach { screen ->
             BottomNavigationItem(
-                icon = { Icon(Icons.Filled.Favorite, contentDescription = null) },
+                icon = {
+                    when (screen.route) {
+                        BottomBarScreen.Cryptos.route -> {
+                            Icon(Icons.Default.Info, contentDescription = null)
+                        }
+                        BottomBarScreen.Events.route -> {
+                            Icon(Icons.Default.Check, contentDescription = null)
+                        }
+                        BottomBarScreen.Settings.route -> {
+                            Icon(Icons.Default.Settings, contentDescription = null)
+                        }
+                    }
+                },
                 label = { Text(stringResource(screen.title)) },
                 selected = currentDestination?.hierarchy?.any { it.route == screen.route } == true,
                 onClick = {
