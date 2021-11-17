@@ -77,13 +77,19 @@ fun CryptoListItem(item: Crypto, onItemClick: (Crypto) -> Unit, onFavoriteClick:
                     .size(60.dp)
                     .padding(10.dp)
             )
-            Text(
-                item.name ?: "",
+            Column(
                 modifier = Modifier
                     .padding(8.dp)
                     .weight(1f),
-                style = MaterialTheme.typography.body1
-            )
+            ){
+//                Text(
+//
+//                )
+                Text(
+                    item.name ?: "",
+                    style = MaterialTheme.typography.body1
+                )
+            }
             Column {
 
                 Text(

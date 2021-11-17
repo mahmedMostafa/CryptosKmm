@@ -2,6 +2,7 @@ package com.mohamed.mostafa.cryptocurrencies.features.cryptos_list.domain.mapper
 
 import com.mohamed.mostafa.cryptocurrencies.data.cache.Crypto_Entity
 import com.mohamed.mostafa.cryptocurrencies.shared.domain.models.Crypto
+import com.mohamed.mostafa.cryptocurrencies.shared.domain.models.PriceState
 
 
 fun Crypto_Entity.toDomainModel(): Crypto {
@@ -12,6 +13,7 @@ fun Crypto_Entity.toDomainModel(): Crypto {
         marketCapRank = marketCapRank.toInt(),
         image = image,
         isFavorite = isFavorite,
+        priceState = PriceState.valueOf(priceState)
     )
 }
 

@@ -5,6 +5,7 @@ import com.mohamed.mostafa.cryptocurrencies.data.cache.CryptosDatabase
 import com.mohamed.mostafa.cryptocurrencies.features.cryptos_list.domain.mappers.toDomainList
 import com.mohamed.mostafa.cryptocurrencies.features.cryptos_list.domain.mappers.toDomainModel
 import com.mohamed.mostafa.cryptocurrencies.shared.domain.models.Crypto
+import com.mohamed.mostafa.cryptocurrencies.shared.domain.models.PriceState
 
 class CryptosDaoImpl(
     private val cryptosDatabase: CryptosDatabase,
@@ -19,7 +20,8 @@ class CryptosDaoImpl(
             marketCapRank = crypto.marketCapRank?.toLong() ?: 0L,
             image = crypto.image ?: "",
             currentPrice = crypto.currentPrice ?: 0.0,
-            marketCap = crypto.marketCap ?: 0L
+            marketCap = crypto.marketCap ?: 0L,
+            priceState = crypto.priceState?.name ?: PriceState.STILL.name
         )
     }
 
