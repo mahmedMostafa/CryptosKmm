@@ -1,6 +1,7 @@
 CREATE TABLE crypto_Entity(
     id TEXT NOT NULL PRIMARY KEY,
     name TEXT NOT NULL,
+    symbol TEXT NOT NULL,
     description TEXT NOT NULL DEFAULT "", --empty string untill it gets updated by the details request--
     image TEXT NOT NULL,
     currentPrice REAL NOT NULL, --Real is retrieved as double from the db--
@@ -13,10 +14,11 @@ CREATE TABLE crypto_Entity(
 --TODO Update the Crypto Entity Later to include list of strings and Enum values--
 
 insertCrypt: INSERT INTO crypto_Entity (
-id,name,image,currentPrice,marketCap,marketCapRank,priceState
-) VALUES (?,?,?,?,?,?,?)
+id,name,symbol,image,currentPrice,marketCap,marketCapRank,priceState
+) VALUES (?,?,?,?,?,?,?,?)
 ON CONFLICT(id) DO UPDATE SET
 name = excluded.name,
+symbol = excluded.symbol,
 image= excluded.image,
 currentPrice= excluded.currentPrice,
 marketCap= excluded.marketCap,

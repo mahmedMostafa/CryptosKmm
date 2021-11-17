@@ -9,6 +9,7 @@ fun Crypto_Entity.toDomainModel(): Crypto {
     return Crypto(
         id = id,
         name = name,
+        symbol = symbol,
         description = description,
         marketCapRank = marketCapRank.toInt(),
         image = image,

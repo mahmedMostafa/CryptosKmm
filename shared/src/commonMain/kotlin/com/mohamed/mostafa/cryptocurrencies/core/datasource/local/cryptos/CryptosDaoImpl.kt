@@ -17,6 +17,7 @@ class CryptosDaoImpl(
         queries.insertCrypt(
             id = crypto.id ?: "",
             name = crypto.name ?: "",
+            symbol = crypto.symbol ?: "",
             marketCapRank = crypto.marketCapRank?.toLong() ?: 0L,
             image = crypto.image ?: "",
             currentPrice = crypto.currentPrice ?: 0.0,

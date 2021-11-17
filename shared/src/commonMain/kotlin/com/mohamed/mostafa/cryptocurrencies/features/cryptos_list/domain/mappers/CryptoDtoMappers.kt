@@ -8,6 +8,7 @@ fun CryptoDto.toDomainModel(): Crypto {
     return Crypto(
         id = id,
         name = name,
+        symbol = symbol,
         image = image,
         currentPrice = currentPrice,
         marketCapRank = marketCapRank,
