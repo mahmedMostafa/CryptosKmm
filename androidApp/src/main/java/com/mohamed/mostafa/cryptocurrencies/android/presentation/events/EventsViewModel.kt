@@ -30,6 +30,7 @@ class EventsViewModel @Inject constructor(
 
     init {
         onTriggerAction(EventsAction.GetEventTypes)
+
     }
 
     fun onTriggerAction(action: EventsAction) {
@@ -51,7 +52,7 @@ class EventsViewModel @Inject constructor(
                 state.value = state.value.copy(eventTypes = eventTypes)
                 //get the events of the first event type
                 //later on we should use flow combine which is better and cleaner
-                onTriggerAction(EventsAction.GetEvents(eventTypes.first()))
+                onTriggerAction(EventsAction.GetEvents(eventTypes.first()))//TODO Error
                 println("Event Types are $eventTypes")
             }
         )

@@ -8,19 +8,20 @@ import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.mohamed.mostafa.cryptocurrencies.android.R
 import com.mohamed.mostafa.cryptocurrencies.android.presentation.cryptos.list.CryptosViewModel
 import com.mohamed.mostafa.cryptocurrencies.android.presentation.navigation.Navigation
+import com.mohamed.mostafa.cryptocurrencies.android.presentation.theme.CryptoTheme
 import dagger.hilt.android.AndroidEntryPoint
 
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
-    private val viewModel: CryptosViewModel by viewModels()
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         installSplashScreen()
         setContent {
-            Navigation()
+            CryptoTheme {
+                Navigation()
+            }
         }
     }
 }
