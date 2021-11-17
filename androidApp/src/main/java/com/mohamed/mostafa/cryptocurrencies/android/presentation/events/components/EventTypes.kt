@@ -54,6 +54,6 @@ fun EventTypeItem(title: String, isSelected: Boolean = false, onItemClicked: (St
                 if (isSelected) MaterialTheme.colors.primary else Color(WHITE),
                 shape = RoundedCornerShape(8.dp)
             )
-            .padding(6.dp),
+            .padding(horizontal = 10.dp, vertical = 6.dp),
     )
 }

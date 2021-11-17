@@ -53,8 +53,6 @@ fun EventsScreen(
                     onTriggerAction(EventsAction.GetEvents(type))
                 }
             )
-            Spacer(modifier = Modifier.height(10.dp))
-
             EventsList(isLoading = state.isLoading, events = state.events)
         }
     }

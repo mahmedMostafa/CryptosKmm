@@ -15,5 +15,6 @@ data class Event(
     val title: String? = null,
     val type: String? = null,
     val venue: String? = null,
-    val website: String? = null
+    val website: String? = null,
+    var isExpanded: Boolean = false,
 )
