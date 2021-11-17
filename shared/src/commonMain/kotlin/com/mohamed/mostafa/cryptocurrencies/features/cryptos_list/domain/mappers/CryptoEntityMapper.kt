@@ -12,6 +12,7 @@ fun Crypto_Entity.toDomainModel(): Crypto {
         symbol = symbol,
         description = description,
         marketCapRank = marketCapRank.toInt(),
+        currentPrice = currentPrice,
         image = image,
         isFavorite = isFavorite,
         priceState = PriceState.valueOf(priceState)
