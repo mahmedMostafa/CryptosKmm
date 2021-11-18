@@ -12,6 +12,7 @@ import androidx.compose.ui.unit.dp
 import com.mohamed.mostafa.cryptocurrencies.android.base.components.DefaultScreen
 import com.mohamed.mostafa.cryptocurrencies.android.presentation.events.components.EventTypes
 import com.mohamed.mostafa.cryptocurrencies.android.presentation.events.components.EventsList
+import com.mohamed.mostafa.cryptocurrencies.features.events.domain.models.EventType
 import com.mohamed.mostafa.cryptocurrencies.features.events.presentation.EventsAction
 import com.mohamed.mostafa.cryptocurrencies.features.events.presentation.EventsState
 
@@ -48,7 +49,7 @@ fun EventsScreen(
         ) {
             EventTypes(
                 types = state.eventTypes,
-                selectedType = state.selectedEventType ?: "",
+                selectedType = state.selectedEventType,
                 onItemClicked = { type ->
                     onTriggerAction(EventsAction.GetEvents(type))
                 }

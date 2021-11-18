@@ -1,5 +1,10 @@
 package com.mohamed.mostafa.cryptocurrencies.core.base.usecases
 
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers.Main
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.launch
+
 abstract class SingleUseCase<Type, in Params> where Type : Any {
 
     abstract suspend fun buildUseCase(params: Params? = null): Type

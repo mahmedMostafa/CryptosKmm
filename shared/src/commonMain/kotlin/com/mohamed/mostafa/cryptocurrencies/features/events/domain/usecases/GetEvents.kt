@@ -3,6 +3,7 @@ package com.mohamed.mostafa.cryptocurrencies.features.events.domain.usecases
 import com.mohamed.mostafa.cryptocurrencies.core.base.usecases.SingleUseCase
 import com.mohamed.mostafa.cryptocurrencies.features.events.domain.models.Event
 import com.mohamed.mostafa.cryptocurrencies.features.events.domain.repository.EventsRepository
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 
 class GetEvents(

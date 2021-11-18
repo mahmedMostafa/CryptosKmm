@@ -8,11 +8,13 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.mohamed.mostafa.cryptocurrencies.features.events.domain.models.Event
+import com.mohamed.mostafa.cryptocurrencies.features.events.domain.models.EventType
 import com.mohamed.mostafa.cryptocurrencies.features.events.domain.usecases.GetEventTypes
 import com.mohamed.mostafa.cryptocurrencies.features.events.domain.usecases.GetEvents
 import com.mohamed.mostafa.cryptocurrencies.features.events.presentation.EventsAction
 import com.mohamed.mostafa.cryptocurrencies.features.events.presentation.EventsState
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
@@ -28,6 +30,7 @@ class EventsViewModel @Inject constructor(
 
     val state = mutableStateOf(EventsState())
 
+    private var eventsCoroutinesJob: Job? = null
 
     init {
         onTriggerAction(EventsAction.GetEventTypes)
@@ -50,7 +53,9 @@ class EventsViewModel @Inject constructor(
                 state.value = state.value.copy(errorMessage = errorMessage)
             },
             onSuccess = { eventTypes ->
-                state.value = state.value.copy(eventTypes = eventTypes)
+                state.value = state.value.copy(
+                    eventTypes = eventTypes
+                )//TODO Error out of index
                 //get the events of the first event type
                 //later on we should use flow combine which is better and cleaner
                 onTriggerAction(EventsAction.GetEvents(eventTypes.first()))//TODO Error
@@ -59,20 +64,28 @@ class EventsViewModel @Inject constructor(
         )
     }
 
-    private fun getEvents(eventType: String) = viewModelScope.launch {
-        state.value = state.value.copy(selectedEventType = eventType)
-        getEvents.invoke(
-            params = eventType,
-            onLoading = { isLoading ->
-                state.value = state.value.copy(isLoading = isLoading)
-            },
-            onSuccess = { events ->
-                state.value = state.value.copy(events = events)
-                println("Events are $events")
-            },
-            onError = { errorMessage ->
-                state.value = state.value.copy(errorMessage = errorMessage)
-            }
-        )
+    private fun getEvents(eventType: EventType) {
+        eventsCoroutinesJob?.cancel()
+        eventsCoroutinesJob = viewModelScope.launch {
+            state.value = state.value.copy(selectedEventType = eventType)
+            getEvents.invoke(
+                params = eventType.title,
+                onLoading = { isLoading ->
+                    state.value = state.value.copy(isLoading = isLoading)
+                },
+                onSuccess = { events ->
+                    state.value = state.value.copy(events = events)
+                    println("Events are $events")
+                },
+                onError = { errorMessage ->
+                    state.value = state.value.copy(errorMessage = errorMessage)
+                }
+            )
+        }
+    }
+
+    override fun onCleared() {
+        eventsCoroutinesJob?.cancel()
+        super.onCleared()
     }
 }
