@@ -21,6 +21,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.zIndex
 import com.mohamed.mostafa.cryptocurrencies.features.events.domain.models.EventType
@@ -89,6 +90,9 @@ fun EventTypeTabIndicator(
                 shape = RoundedCornerShape(8.dp),
             )
             .zIndex(1f)
+            .onGloballyPositioned {coordinates->
+                coordinates.size.width
+            }
     )
 }
 
@@ -115,5 +119,4 @@ fun EventTypeItem(eventType: EventType, isSelected: Boolean, onItemClicked: (Eve
             color = textColor,
         ),
     )
-
 }

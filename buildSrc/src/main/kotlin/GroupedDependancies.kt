@@ -14,6 +14,18 @@ internal val composeDependencies = listOf(
     Accompanist.coil
 )
 
+internal val testingDependencies = listOf(
+    Testing.mockk,
+    Testing.mockJvm,
+    Testing.hamcrest,
+    Testing.junit4,
+    Testing.turbine,
+    AndroidXTest.core,
+    AndroidXTest.junit,
+    AndroidXTest.runner,
+    Kotlinx.coroutinesTest,
+)
+
 internal val androidXDependencies = listOf(
     AndroidX.appCompat,
     AndroidX.coreKtx,

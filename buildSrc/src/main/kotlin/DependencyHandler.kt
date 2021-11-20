@@ -55,6 +55,11 @@ fun DependencyHandler.addCacheIosDependencies() {
     }
 }
 
+fun DependencyHandler.addTestingDependencies() {
+    testingDependencies.forEach {
+        add("testImplementation", it)
+    }
+}
 
 
 

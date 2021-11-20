@@ -4,10 +4,10 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Check
-import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
@@ -23,7 +23,9 @@ import com.mohamed.mostafa.cryptocurrencies.android.presentation.cryptos.list.Cr
 import com.mohamed.mostafa.cryptocurrencies.android.presentation.cryptos.list.CryptosViewModel
 import com.mohamed.mostafa.cryptocurrencies.android.presentation.events.EventsScreen
 import com.mohamed.mostafa.cryptocurrencies.android.presentation.events.EventsViewModel
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 
+@OptIn(ExperimentalCoroutinesApi::class)
 @Composable
 fun Navigation() {
     val navController = rememberNavController()
@@ -59,8 +61,11 @@ fun Navigation() {
             composable(BottomBarScreen.Events.route) { navBackStackEntry ->
                 val viewModel = hiltViewModel<EventsViewModel>()
                 EventsScreen(
-                    state = viewModel.state.value,
-                    onTriggerAction = viewModel::onTriggerAction,
+                    eventTypes = viewModel.eventTypes.collectAsState().value,
+                    events = viewModel.events.collectAsState(initial = emptyList()).value,
+                    selectedType = viewModel.selectedEventType.collectAsState(initial = null).value,
+                    isLoading = viewModel.isLoadingEvents.collectAsState().value,
+                    onEventTypeClicked = viewModel::onEventTypeChanged,
                 )
             }
 

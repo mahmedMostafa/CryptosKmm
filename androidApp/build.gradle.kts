@@ -49,4 +49,6 @@ dependencies {
     addComposeDependencies()
 
     addHiltDependencies()
+
+    addTestingDependencies()
 }

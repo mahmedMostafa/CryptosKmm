@@ -12,6 +12,7 @@ import androidx.compose.ui.unit.dp
 import com.mohamed.mostafa.cryptocurrencies.android.base.components.DefaultScreen
 import com.mohamed.mostafa.cryptocurrencies.android.presentation.events.components.EventTypes
 import com.mohamed.mostafa.cryptocurrencies.android.presentation.events.components.EventsList
+import com.mohamed.mostafa.cryptocurrencies.features.events.domain.models.Event
 import com.mohamed.mostafa.cryptocurrencies.features.events.domain.models.EventType
 import com.mohamed.mostafa.cryptocurrencies.features.events.presentation.EventsAction
 import com.mohamed.mostafa.cryptocurrencies.features.events.presentation.EventsState
@@ -19,8 +20,11 @@ import com.mohamed.mostafa.cryptocurrencies.features.events.presentation.EventsS
 
 @Composable
 fun EventsScreen(
-    state: EventsState,
-    onTriggerAction: (EventsAction) -> Unit,
+    eventTypes: List<EventType>,
+    selectedType: EventType?,
+    events: List<Event>,
+    isLoading: Boolean,
+    onEventTypeClicked: (EventType) -> Unit
 ) {
 
     var showMenu by remember { mutableStateOf(false) }
@@ -48,13 +52,13 @@ fun EventsScreen(
             horizontalAlignment = Alignment.CenterHorizontally,
         ) {
             EventTypes(
-                types = state.eventTypes,
-                selectedType = state.selectedEventType,
+                types = eventTypes,
+                selectedType = selectedType,
                 onItemClicked = { type ->
-                    onTriggerAction(EventsAction.GetEvents(type))
+                    onEventTypeClicked(type)
                 }
             )
-            EventsList(isLoading = state.isLoading, events = state.events)
+            EventsList(isLoading = isLoading, events = events)
         }
     }
 }
