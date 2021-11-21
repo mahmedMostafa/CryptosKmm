@@ -28,6 +28,9 @@ marketCapRank= excluded.marketCapRank;
 
 getAllCryptos: SELECT * FROM crypto_Entity;
 
+searchCryptos: SELECT * FROM crypto_Entity
+WHERE name LIKE ('%' || :name || '%') OR symbol LIKE ('%' || :symbol || '%');
+
 getAllFavorites: SELECT * FROM crypto_Entity WHERE isFavorite = 1;
 
 addToFavorites: UPDATE crypto_Entity SET isFavorite = 1 WHERE id =:id;

@@ -6,6 +6,8 @@ import com.mohamed.mostafa.cryptocurrencies.core.datasource.remote.ApiService
 import com.mohamed.mostafa.cryptocurrencies.features.cryptos_list.domain.mappers.toDomainList
 import com.mohamed.mostafa.cryptocurrencies.shared.domain.models.Crypto
 import com.mohamed.mostafa.cryptocurrencies.features.cryptos_list.domain.repository.CryptosRepository
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flowOf
 
 class CryptoRepositoryImpl(
     private val cryptoService: ApiService,
@@ -26,5 +28,9 @@ class CryptoRepositoryImpl(
 
     override suspend fun addOrRemoveFromFavorites(id: String) {
         cryptoCache.addOrRemoveFromFavorites(id)
+    }
+
+    override suspend fun searchCryptos(): Flow<List<Crypto>> {
+        return flowOf(cryptoCache.getAllCryptos())
     }
 }
