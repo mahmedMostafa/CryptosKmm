@@ -10,5 +10,5 @@ interface CryptosRepository {
 
     suspend fun addOrRemoveFromFavorites(id: String)
 
-    suspend fun searchCryptos(): Flow<List<Crypto>>
+    suspend fun searchCryptos(query: String): Flow<List<Crypto>>
 }

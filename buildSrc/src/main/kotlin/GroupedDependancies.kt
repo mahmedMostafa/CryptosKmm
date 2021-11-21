@@ -42,7 +42,8 @@ internal val composeThirdPartyDependencies = listOf(
 )
 
 internal val cacheDependencies = listOf(
-    SQLDelight.runtime
+    SQLDelight.runtime,
+    SQLDelight.extensions,
 )
 
 internal val cacheAndroidDependencies = listOf(

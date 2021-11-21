@@ -30,7 +30,7 @@ class CryptoRepositoryImpl(
         cryptoCache.addOrRemoveFromFavorites(id)
     }
 
-    override suspend fun searchCryptos(): Flow<List<Crypto>> {
+    override suspend fun searchCryptos(query: String): Flow<List<Crypto>> {
         return flowOf(cryptoCache.getAllCryptos())
     }
 }
