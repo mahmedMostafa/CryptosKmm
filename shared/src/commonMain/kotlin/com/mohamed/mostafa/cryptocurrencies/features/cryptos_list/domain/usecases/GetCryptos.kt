@@ -5,7 +5,7 @@ import com.mohamed.mostafa.cryptocurrencies.shared.domain.models.Crypto
 import com.mohamed.mostafa.cryptocurrencies.features.cryptos_list.domain.repository.CryptosRepository
 import kotlinx.coroutines.delay
 
-class GetCryptosUseCase(
+class GetCryptos(
     private val repository: CryptosRepository
 ) : SingleUseCase<List<Crypto>, Int>() {
 

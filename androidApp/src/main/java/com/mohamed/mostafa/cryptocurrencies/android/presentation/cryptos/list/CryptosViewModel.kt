@@ -6,25 +6,43 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.mohamed.mostafa.cryptocurrencies.core.datasource.remote.ApiService.Constants.PAGINATION_PER_PAGE_COUNT
+import com.mohamed.mostafa.cryptocurrencies.features.cryptos_list.domain.models.SearchSort
 import com.mohamed.mostafa.cryptocurrencies.shared.domain.models.Crypto
-import com.mohamed.mostafa.cryptocurrencies.features.cryptos_list.domain.usecases.GetCryptosUseCase
+import com.mohamed.mostafa.cryptocurrencies.features.cryptos_list.domain.usecases.GetCryptos
+import com.mohamed.mostafa.cryptocurrencies.features.cryptos_list.domain.usecases.SearchCryptos
 import com.mohamed.mostafa.cryptocurrencies.features.cryptos_list.presentation.cryptos.CryptosActions
 import com.mohamed.mostafa.cryptocurrencies.features.cryptos_list.presentation.cryptos.CryptosState
 import com.mohamed.mostafa.cryptocurrencies.shared.domain.usecases.AddOrRemoveFromFavorites
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.FlowPreview
+import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
+@FlowPreview
 @HiltViewModel
 class CryptosViewModel @Inject constructor(
     private val savedStateHandle: SavedStateHandle,
-    private val getCryptosUseCase: GetCryptosUseCase,
+    private val getCryptos: GetCryptos,
     private val addOrRemoveFromFavorites: AddOrRemoveFromFavorites,
+    private val searchCryptos: SearchCryptos,
 ) : ViewModel() {
 
+    val sortState = MutableStateFlow(SearchSort.ByPrice)
+    val queryState = MutableStateFlow("")
 
     val state: MutableState<CryptosState> = mutableStateOf(CryptosState())
 
+    val cryptos = combine(
+        sortState,
+        queryState
+    ) { sort, query ->
+        searchCryptos.invoke(query, sort)
+    }.stateIn(
+        scope = viewModelScope,
+        started = SharingStarted.WhileSubscribed(5000),
+        initialValue = emptyFlow(),
+    )
 
     fun onTriggerIntent(actions: CryptosActions) {
         when (actions) {
@@ -51,7 +69,7 @@ class CryptosViewModel @Inject constructor(
     }
 
     private fun getCryptos() = viewModelScope.launch {
-        getCryptosUseCase.invoke(
+        getCryptos.invoke(
             params = state.value.page,
             onLoading = { isLoading ->
                 if (state.value.page == 1)
