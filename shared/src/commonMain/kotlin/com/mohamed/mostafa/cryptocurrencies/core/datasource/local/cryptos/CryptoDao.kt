@@ -1,6 +1,8 @@
 package com.mohamed.mostafa.cryptocurrencies.core.datasource.local.cryptos
 
+import com.mohamed.mostafa.cryptocurrencies.features.cryptos_list.domain.models.SearchSort
 import com.mohamed.mostafa.cryptocurrencies.shared.domain.models.Crypto
+import kotlinx.coroutines.flow.Flow
 
 
 interface CryptoDao {
@@ -18,6 +20,8 @@ interface CryptoDao {
     fun getCryptos(page: Int): List<Crypto>
 
     fun getAllCryptos(): List<Crypto>
+
+    fun searchCryptos(query: String, sort: SearchSort): Flow<List<Crypto>>
 
     fun deleteCrypto(id: String)
 

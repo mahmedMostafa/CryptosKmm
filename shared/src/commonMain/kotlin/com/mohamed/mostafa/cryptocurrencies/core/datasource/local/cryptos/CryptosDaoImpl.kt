@@ -4,8 +4,13 @@ import com.mohamed.mostafa.cryptocurrencies.core.datasource.remote.ApiService.Co
 import com.mohamed.mostafa.cryptocurrencies.data.cache.CryptosDatabase
 import com.mohamed.mostafa.cryptocurrencies.features.cryptos_list.domain.mappers.toDomainList
 import com.mohamed.mostafa.cryptocurrencies.features.cryptos_list.domain.mappers.toDomainModel
+import com.mohamed.mostafa.cryptocurrencies.features.cryptos_list.domain.models.SearchSort
 import com.mohamed.mostafa.cryptocurrencies.shared.domain.models.Crypto
 import com.mohamed.mostafa.cryptocurrencies.shared.domain.models.PriceState
+import com.squareup.sqldelight.runtime.coroutines.asFlow
+import com.squareup.sqldelight.runtime.coroutines.mapToList
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.map
 
 class CryptosDaoImpl(
     private val cryptosDatabase: CryptosDatabase,
@@ -60,6 +65,16 @@ class CryptosDaoImpl(
 
     override fun getAllCryptos(): List<Crypto> {
         return queries.getAllCryptos().executeAsList().toDomainList()
+    }
+
+    override fun searchCryptos(query: String, sort: SearchSort): Flow<List<Crypto>> {
+        return if (sort is SearchSort.ByName) {
+            queries.searchCryptosOrderdByName(query).asFlow().mapToList()
+                .map { it.toDomainList() }
+        } else {
+            queries.searchCryptosOrderdByPrice(query).asFlow().mapToList()
+                .map { it.toDomainList() }
+        }
     }
 
     override fun deleteCrypto(id: String) {

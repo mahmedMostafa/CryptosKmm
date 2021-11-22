@@ -4,6 +4,7 @@ package com.mohamed.mostafa.cryptocurrencies.features.cryptos_list.data.reposito
 import com.mohamed.mostafa.cryptocurrencies.core.datasource.local.cryptos.CryptoDao
 import com.mohamed.mostafa.cryptocurrencies.core.datasource.remote.ApiService
 import com.mohamed.mostafa.cryptocurrencies.features.cryptos_list.domain.mappers.toDomainList
+import com.mohamed.mostafa.cryptocurrencies.features.cryptos_list.domain.models.SearchSort
 import com.mohamed.mostafa.cryptocurrencies.shared.domain.models.Crypto
 import com.mohamed.mostafa.cryptocurrencies.features.cryptos_list.domain.repository.CryptosRepository
 import kotlinx.coroutines.flow.Flow
@@ -30,7 +31,7 @@ class CryptoRepositoryImpl(
         cryptoCache.addOrRemoveFromFavorites(id)
     }
 
-    override suspend fun searchCryptos(query: String): Flow<List<Crypto>> {
-        return flowOf(cryptoCache.getAllCryptos())
+    override suspend fun searchCryptos(query: String,sort: SearchSort): Flow<List<Crypto>> {
+
     }
 }

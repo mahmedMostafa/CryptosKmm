@@ -29,11 +29,11 @@ marketCapRank= excluded.marketCapRank;
 getAllCryptos: SELECT * FROM crypto_Entity;
 
 searchCryptosOrderdByName: SELECT * FROM crypto_Entity
-WHERE name LIKE ('%' || :name || '%') OR symbol LIKE ('%' || :symbol || '%')
+WHERE name LIKE ('%' || :query || '%') OR symbol LIKE ('%' || :query || '%')
 ORDER BY name;
 
 searchCryptosOrderdByPrice: SELECT * FROM crypto_Entity
-WHERE name LIKE ('%' || :name || '%') OR symbol LIKE ('%' || :symbol || '%')
+WHERE name LIKE ('%' || :query || '%') OR symbol LIKE ('%' || :query || '%')
 ORDER BY currentPrice;
 
 getAllFavorites: SELECT * FROM crypto_Entity WHERE isFavorite = 1;
