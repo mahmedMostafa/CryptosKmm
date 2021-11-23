@@ -28,21 +28,11 @@ class CryptosViewModel @Inject constructor(
     private val searchCryptos: SearchCryptos,
 ) : ViewModel() {
 
-    val sortState = MutableStateFlow(SearchSort.ByPrice)
-    val queryState = MutableStateFlow("")
+
 
     val state: MutableState<CryptosState> = mutableStateOf(CryptosState())
 
-    val cryptos = combine(
-        sortState,
-        queryState
-    ) { sort, query ->
-        searchCryptos.invoke(query, sort)
-    }.stateIn(
-        scope = viewModelScope,
-        started = SharingStarted.WhileSubscribed(5000),
-        initialValue = emptyFlow(),
-    )
+
 
     fun onTriggerIntent(actions: CryptosActions) {
         when (actions) {
