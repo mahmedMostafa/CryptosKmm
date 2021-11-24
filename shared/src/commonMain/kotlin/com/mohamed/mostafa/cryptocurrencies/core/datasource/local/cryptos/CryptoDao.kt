@@ -21,7 +21,7 @@ interface CryptoDao {
 
     fun getAllCryptos(): List<Crypto>
 
-    fun searchCryptos(query: String, sort: SearchSort): Flow<List<Crypto>>
+    fun searchCryptos(query: String, sort: SearchSort): List<Crypto>
 
     fun deleteCrypto(id: String)
 

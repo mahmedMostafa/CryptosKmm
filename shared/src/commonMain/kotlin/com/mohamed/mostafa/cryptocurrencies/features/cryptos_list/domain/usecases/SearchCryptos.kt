@@ -9,13 +9,11 @@ import kotlinx.coroutines.flow.debounce
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.filter
 
-@FlowPreview
+
 class SearchCryptos(
     private val repository: CryptosRepository,
 ) {
-    suspend operator fun invoke(query: String, sort: SearchSort): Flow<List<Crypto>> {
+    suspend operator fun invoke(query: String, sort: SearchSort): List<Crypto> {
         return repository.searchCryptos(query, sort)
-            .debounce(timeoutMillis = 500)
-            .distinctUntilChanged()
     }
 }

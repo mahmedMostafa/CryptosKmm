@@ -9,6 +9,7 @@ import androidx.compose.material.icons.filled.Settings
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -23,9 +24,16 @@ import com.mohamed.mostafa.cryptocurrencies.android.presentation.cryptos.list.Cr
 import com.mohamed.mostafa.cryptocurrencies.android.presentation.cryptos.list.CryptosViewModel
 import com.mohamed.mostafa.cryptocurrencies.android.presentation.events.EventsScreen
 import com.mohamed.mostafa.cryptocurrencies.android.presentation.events.EventsViewModel
+import com.mohamed.mostafa.cryptocurrencies.android.presentation.search.SearchScreen
+import com.mohamed.mostafa.cryptocurrencies.android.presentation.search.SearchViewModel
+import com.mohamed.mostafa.cryptocurrencies.features.cryptos_list.domain.models.SearchSort
+import com.mohamed.mostafa.cryptocurrencies.features.cryptos_list.domain.models.SearchSort.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.FlowPreview
 
-@OptIn(ExperimentalCoroutinesApi::class)
+@ExperimentalCoroutinesApi
+@ExperimentalComposeUiApi
+@FlowPreview
 @Composable
 fun Navigation() {
     val navController = rememberNavController()
@@ -54,6 +62,9 @@ fun Navigation() {
                     onTriggerAction = viewModel::onTriggerIntent,
                     onItemClick = { crypto ->
                         navController.navigate("${Screen.CryptoDetail.route}/${crypto.id}")
+                    },
+                    onSearchClick = {
+                        navController.navigate(Screen.Search.route)
                     }
                 )
             }
@@ -66,6 +77,23 @@ fun Navigation() {
                     selectedType = viewModel.selectedEventType.collectAsState(initial = null).value,
                     isLoading = viewModel.isLoadingEvents.collectAsState().value,
                     onEventTypeClicked = viewModel::onEventTypeChanged,
+                )
+            }
+
+            composable(
+                route = Screen.Search.route,
+            ) {
+                val viewModel = hiltViewModel<SearchViewModel>()
+                SearchScreen(
+                    query = viewModel.queryState.value,
+                    onValueChange = viewModel::onQueryChange,
+                    onDoneClick = viewModel::onDoneClick,
+                    cryptos = viewModel.cryptos.collectAsState().value,
+                    onCryptoItemClick = { crypto ->
+                        navController.navigate("${Screen.CryptoDetail.route}/${crypto.id}")
+                    },
+                    onSearchByNameClick = { viewModel.sortState.value = ByName },
+                    onSearchByPriceClick = { viewModel.sortState.value = ByPrice },
                 )
             }
 

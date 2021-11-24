@@ -67,13 +67,11 @@ class CryptosDaoImpl(
         return queries.getAllCryptos().executeAsList().toDomainList()
     }
 
-    override fun searchCryptos(query: String, sort: SearchSort): Flow<List<Crypto>> {
+    override fun searchCryptos(query: String, sort: SearchSort): List<Crypto> {
         return if (sort is SearchSort.ByName) {
-            queries.searchCryptosOrderdByName(query).asFlow().mapToList()
-                .map { it.toDomainList() }
+            queries.searchCryptosOrderdByName(query).executeAsList().toDomainList()
         } else {
-            queries.searchCryptosOrderdByPrice(query).asFlow().mapToList()
-                .map { it.toDomainList() }
+            queries.searchCryptosOrderdByPrice(query).executeAsList().toDomainList()
         }
     }
 

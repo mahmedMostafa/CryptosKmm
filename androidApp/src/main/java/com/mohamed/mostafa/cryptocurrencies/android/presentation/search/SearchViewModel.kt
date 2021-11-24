@@ -16,17 +16,30 @@ class SearchViewModel @Inject constructor(
     private val searchCryptos: SearchCryptos,
 ) : ViewModel() {
 
-    val sortState = MutableStateFlow(SearchSort.ByPrice)
+    val sortState = MutableStateFlow<SearchSort>(SearchSort.ByPrice)
     val queryState = MutableStateFlow("")
 
     val cryptos = combine(
         sortState,
         queryState
+            .filter { it.isNotBlank() }
+            .debounce(500)
+            .distinctUntilChanged()
     ) { sort, query ->
+        println("triggered a new search")
         searchCryptos.invoke(query, sort)
     }.stateIn(
         scope = viewModelScope,
         started = SharingStarted.WhileSubscribed(5000),
-        initialValue = emptyFlow(),
+        initialValue = emptyList(),
     )
+
+    fun onDoneClick() {
+        //only reset the states to trigger the search again
+        queryState.value = queryState.value
+    }
+
+    fun onQueryChange(query: String) {
+        queryState.value = query
+    }
 }

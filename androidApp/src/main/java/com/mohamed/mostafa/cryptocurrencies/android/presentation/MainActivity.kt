@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
+import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.mohamed.mostafa.cryptocurrencies.android.R
 import com.mohamed.mostafa.cryptocurrencies.android.presentation.cryptos.list.CryptosViewModel
@@ -12,6 +13,7 @@ import com.mohamed.mostafa.cryptocurrencies.android.presentation.theme.CryptoThe
 import dagger.hilt.android.AndroidEntryPoint
 
 
+@ExperimentalComposeUiApi
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 

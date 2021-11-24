@@ -8,6 +8,7 @@ import com.mohamed.mostafa.cryptocurrencies.features.crypto_detail.domain.usecas
 import com.mohamed.mostafa.cryptocurrencies.features.cryptos_list.data.repository.CryptoRepositoryImpl
 import com.mohamed.mostafa.cryptocurrencies.features.cryptos_list.domain.repository.CryptosRepository
 import com.mohamed.mostafa.cryptocurrencies.features.cryptos_list.domain.usecases.GetCryptos
+import com.mohamed.mostafa.cryptocurrencies.features.cryptos_list.domain.usecases.SearchCryptos
 import com.mohamed.mostafa.cryptocurrencies.features.events.data.repository.EventsRepositoryImpl
 import com.mohamed.mostafa.cryptocurrencies.features.events.domain.repository.EventsRepository
 import com.mohamed.mostafa.cryptocurrencies.features.events.domain.usecases.GetEventTypes
@@ -74,6 +75,12 @@ object UseCasesModule {
     @ViewModelScoped
     fun provideGetCryptosUseCase(repository: CryptosRepository): GetCryptos {
         return GetCryptos(repository)
+    }
+
+    @Provides
+    @ViewModelScoped
+    fun provideSearchCryptosUseCase(repository: CryptosRepository): SearchCryptos {
+        return SearchCryptos(repository)
     }
 
 
